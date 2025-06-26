@@ -1117,21 +1117,20 @@ class ZPLEditor:
                 # Esporta ^BY
                 zpl += f"^FO{x},{y}\n"
                 zpl += f"^BY{obj.bar_module},{obj.bar_ratio},{obj.bar_height}\n"
-                # Penultimo parametro: Y = sopra, N = sotto
                 hri_pos = "Y" if obj.hri_above else "N"
                 # Ultimo parametro sempre Y
                 if obj.barcode_type == "128":
-                    zpl += f"^BC,N,{height},Y,{hri_pos},Y\n"
+                    zpl += f"^BCN,{height},Y,{hri_pos},Y\n"
                 elif obj.barcode_type == "39":
-                    zpl += f"^B3,N,N,{height},Y,{hri_pos},Y\n"
+                    zpl += f"^B3N,N,{height},Y,{hri_pos},Y\n"
                 elif obj.barcode_type == "93":
-                    zpl += f"^BA,N,{height},Y,{hri_pos},Y\n"
+                    zpl += f"^BAN,{height},Y,{hri_pos},Y\n"
                 elif obj.barcode_type == "I25":
-                    zpl += f"^B2,N,N,{height},Y,{hri_pos},Y\n"
+                    zpl += f"^B2N,N,{height},Y,{hri_pos},Y\n"
                 elif obj.barcode_type in ["EAN13", "EAN8"]:
-                    zpl += f"^BE,N,{height},Y,{hri_pos},Y\n"
+                    zpl += f"^BEN,{height},Y,{hri_pos},Y\n"
                 elif obj.barcode_type in ["UPCA", "UPCE"]:
-                    zpl += f"^BU,N,{height},Y,{hri_pos},Y\n"
+                    zpl += f"^BUN,{height},Y,{hri_pos},Y\n"
                 zpl += f"^FD{obj.text}^FS\n"
                 continue
             x = int(obj.x * self.SCALE)
